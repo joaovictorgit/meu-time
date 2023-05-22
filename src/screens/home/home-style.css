@@ -1,0 +1,19 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-search {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 230px;
+  background: #d4d4d4;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

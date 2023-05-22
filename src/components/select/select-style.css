@@ -1,0 +1,47 @@
+.select {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-title-select {
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 42px;
+  color: #000000;
+}
+
+.select-container {
+  position: relative;
+  width: 200px;
+}
+
+select {
+  width: 200px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  appearance: none;
+  background-color: transparent;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+}
+
+select:focus {
+  outline: none;
+}
+
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  border-color: #000 transparent transparent transparent;
+  pointer-events: none;
+}
