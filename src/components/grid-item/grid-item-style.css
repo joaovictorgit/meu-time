@@ -1,0 +1,41 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.text-grid {
+  width: 150px;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: #000000;
+  border-bottom: 2px solid #000;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(100px, 0.5fr));
+  gap: 5px;
+  margin-left: 10px;
+}
+
+.grid-menu-item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #3a3535;
+  border: 1px solid #e95f11;
+  color: #fff;
+  padding: 25px;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.grid-menu-item:hover {
+  transform: scale(1.1);
+}

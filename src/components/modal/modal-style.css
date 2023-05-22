@@ -1,0 +1,38 @@
+.modal {
+  position: relative;
+  width: 350px;
+  height: 200px;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-modal {
+  width: 200px;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid #000;
+}
+
+.input-modal:focus {
+  outline: none;
+}
+
+.btn-login {
+  margin-top: 20px;
+}
