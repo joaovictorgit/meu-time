@@ -22,3 +22,17 @@
   line-height: 42px;
   color: #000000;
 }
+
+.static-formation {
+  display: flex;
+  flex-direction: column;
+}
+
+.static-formation label {
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 42px;
+  color: #000000;
+}

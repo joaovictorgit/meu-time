@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../button/button";
 import "./modal-style.css";
 
@@ -7,6 +8,17 @@ interface TModal {
 }
 
 const Modal = ({ isOpen, closeModal }: TModal) => {
+  const [key, setKey] = useState("");
+
+  const handleInput = (event: any) => {
+    setKey(event.target.value);
+  };
+
+  const sendKey = () => {
+    localStorage.setItem("key", JSON.stringify(key));
+    closeModal();
+  };
+
   return (
     <div>
       {isOpen && (
@@ -16,9 +28,14 @@ const Modal = ({ isOpen, closeModal }: TModal) => {
               &times;
             </span>
             <h4>Digite sua chave da API</h4>
-            <input type="password" className="input-modal" />
+            <input
+              type="password"
+              className="input-modal"
+              onChange={handleInput}
+              value={key}
+            />
             <div className="btn-login">
-              <Button nameButton="Login" />
+              <Button nameButton="Login" onClick={sendKey} />
             </div>
           </div>
         </div>

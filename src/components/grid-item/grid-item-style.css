@@ -15,7 +15,7 @@
 
 .container-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(100px, 0.5fr));
+  grid-template-columns: repeat(4, minmax(180px, 0.7fr));
   gap: 5px;
   margin-left: 10px;
 }
@@ -24,11 +24,10 @@
   display: flex;
   flex-direction: column;
   row-gap: 15px;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
-  background-color: #3a3535;
-  border: 1px solid #e95f11;
+  box-shadow: 0.5px 0.5px #000;
   color: #fff;
   padding: 25px;
   align-items: center;
@@ -38,4 +37,22 @@
 
 .grid-menu-item:hover {
   transform: scale(1.1);
+}
+
+.text-item {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+.text-item1 {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #000;
+}
+
+.container-item-texts {
+  display: flex;
+  flex-direction: column;
+  margin-top: -15px;
 }

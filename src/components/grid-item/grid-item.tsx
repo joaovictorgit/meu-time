@@ -1,23 +1,22 @@
 import "./grid-item-style.css";
 
 const GridItem = ({ arrayAux }: any) => {
-  /*const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-    <Modal isOpen={isOpen} closeModal={closeModal} />
-  };*/
   return (
     <div className="grid">
       <label className="text-grid">Jogadores</label>
       <div className="container-grid">
-        {arrayAux.slice(0, 8).map((item: any, index: number) => (
+        {arrayAux.slice(0, 12).map((item: any, index: number) => (
           <div className="grid-menu-item" key={index}>
-            {item}
+            <img
+              src={item.photo}
+              alt={item.id}
+              style={{ width: 50, height: 50, borderRadius: 50 }}
+            />
+            <div className="container-item-texts">
+              <label className="text-item">{item.firstname}</label>
+              <label className="text-item1">{item.age} anos</label>
+              <label className="text-item1">{item.nationality}</label>
+            </div>
           </div>
         ))}
       </div>

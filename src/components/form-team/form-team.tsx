@@ -1,5 +1,5 @@
 import Button from "../button/button";
-import Select from "../select/select";
+import Selects from "../select/select";
 import "./form-team-style.css";
 
 interface TForm {
@@ -7,16 +7,18 @@ interface TForm {
 }
 
 const FormTeam = ({ showResult }: TForm) => {
-  const auxArray = ["Páis", "Liga", "Time", "Temporada"];
   return (
-    <div className="container-form" onClick={showResult}>
-      <label className="title-form">Escolha um time</label>
+    <div className="container-form">
+      <label
+        className="title-form"
+        onClick={() => console.log(localStorage.getItem("key"))}
+      >
+        Escolha um time
+      </label>
       <div className="form-team">
-        {auxArray.map((arr, index) => (
-          <Select array={[]} name={arr} key={index} />
-        ))}
+        <Selects />
         <div className="btn-search">
-          <Button nameButton="Buscar" />
+          <Button nameButton="Buscar" onClick={showResult} />
         </div>
       </div>
     </div>

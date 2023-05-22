@@ -2,10 +2,15 @@ import "./button-style.css";
 
 interface TButton {
   nameButton: string;
+  onClick: any;
 }
 
-const Button = ({ nameButton }: TButton) => {
-  return <button className="button">{nameButton}</button>;
+const Button = ({ nameButton, onClick }: TButton) => {
+  return (
+    <button className="button" onClick={onClick}>
+      {nameButton}
+    </button>
+  );
 };
 
 export default Button;
