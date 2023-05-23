@@ -2,41 +2,89 @@ import { useEffect, useState } from "react";
 import "./select-style.css";
 
 const Selects = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [res, setRes] = useState({});
+  const [selectedOptionCountry, setSelectedOptionCountry] = useState("");
+  const [selectedOptionLeague, setSelectedOptionLeague] = useState("");
+  const [selectedOptionTeam, setSelectedOptionTeam] = useState("");
+  const [selectedOptionSeason, setSelectedOptionSeason] = useState("");
+
   const [countries, setCountries] = useState([]);
-  const [seasons, setSeason] = useState(["2010", "2011"]);
+  const [leagues, setLeagues] = useState([]);
+  const [teams, setTeams] = useState([]);
+  const [seasons, setSeason] = useState([]);
 
   const getCountries = async () => {
     await fetch("https://v3.football.api-sports.io/countries", {
       method: "GET",
       headers: {
         "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": "fe99f16ffa9da481a6eb2e7fbee1a65e",
+        "x-rapidapi-key": "76d889ec873b71f992ad6039832cf83f",
       },
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        setCountries(result.response);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
+  const getLeagues = async () => {
+    await fetch("https://v3.football.api-sports.io/leagues", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": "76d889ec873b71f992ad6039832cf83f",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setLeagues(result.response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const changeOptions = async () => {
-    try {
-    } catch (err) {
-      console.log("error");
-    }
+  const getTeams = async () => {
+    await fetch("https://v3.football.api-sports.io/teams/countries", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": "76d889ec873b71f992ad6039832cf83f",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setTeams(result.response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getSeasons = async () => {
+    await fetch(`https://v3.football.api-sports.io/leagues/seasons`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": "76d889ec873b71f992ad6039832cf83f",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setSeason(result.response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
-    changeOptions();
+    getCountries();
+    getLeagues();
+    getTeams();
+    getSeasons();
   }, []);
 
   return (
@@ -44,19 +92,20 @@ const Selects = () => {
       <div className="select">
         <label
           className="text-title-select"
-          onClick={() => {
-            getCountries();
-          }}
+          onClick={() => console.log(selectedOptionCountry)}
         >
           País
         </label>
         <div className="select-container">
-          <select value={selectedOption} onChange={handleSelectChange}>
-            <option value="">Selecione uma opção</option>
+          <select
+            value={selectedOptionCountry}
+            onChange={(event) => {
+              setSelectedOptionCountry(event.target.value);
+            }}
+          >
+            <option>Selecione uma opção</option>
             {countries.map((item, index) => (
-              <option value="opc" key={index}>
-                {item.name}
-              </option>
+              <option key={index}>{item.name}</option>
             ))}
           </select>
           <span className="select-arrow"></span>
@@ -66,12 +115,14 @@ const Selects = () => {
       <div className="select">
         <label className="text-title-select">Liga</label>
         <div className="select-container">
-          <select value={selectedOption} onChange={handleSelectChange}>
+          <select
+            disabled={!selectedOptionCountry}
+            value={selectedOptionLeague}
+            onChange={(event) => setSelectedOptionLeague(event.target.value)}
+          >
             <option value="">Selecione uma opção</option>
-            {countries.map((item, index) => (
-              <option value="opc" key={index}>
-                {item.name}
-              </option>
+            {leagues.map((item, index) => (
+              <option key={index}>{item.name}</option>
             ))}
           </select>
           <span className="select-arrow"></span>
@@ -81,12 +132,14 @@ const Selects = () => {
       <div className="select">
         <label className="text-title-select">Time</label>
         <div className="select-container">
-          <select value={selectedOption} onChange={handleSelectChange}>
+          <select
+            disabled={!selectedOptionLeague}
+            value={selectedOptionTeam}
+            onChange={(event) => setSelectedOptionTeam(event.target.value)}
+          >
             <option value="">Selecione uma opção</option>
-            {countries.map((item, index) => (
-              <option value="opc" key={index}>
-                {item.name}
-              </option>
+            {teams.map((item, index) => (
+              <option key={index}>{item.name}</option>
             ))}
           </select>
           <span className="select-arrow"></span>
@@ -96,12 +149,14 @@ const Selects = () => {
       <div className="select">
         <label className="text-title-select">Temporada</label>
         <div className="select-container">
-          <select value={selectedOption} onChange={handleSelectChange}>
+          <select
+            disabled={!selectedOptionTeam}
+            value={selectedOptionSeason}
+            onChange={(event) => setSelectedOptionSeason(event.target.value)}
+          >
             <option value="">Selecione uma opção</option>
             {seasons.map((item, index) => (
-              <option value="opc" key={index}>
-                {item}
-              </option>
+              <option key={index}>{item}</option>
             ))}
           </select>
           <span className="select-arrow"></span>
